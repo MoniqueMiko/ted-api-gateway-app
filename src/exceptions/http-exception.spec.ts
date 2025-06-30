@@ -1,4 +1,4 @@
-import { HttpException } from './http-exception.strategy';
+import { HttpException } from './http-exception';
 import { HttpStatus } from '@nestjs/common';
 
 describe('HttpException', () => {
@@ -25,10 +25,10 @@ describe('HttpException', () => {
   ];
 
   testCases.forEach(({ status, expectedStatus }) => {
-    it(`deve retornar status ${expectedStatus} corretamente`, async () => {
+    it(`should return status ${expectedStatus} correctly`, async () => {
       const response = {
         status: Promise.resolve(status),
-        message: { text: 'teste' },
+        message: { text: 'test' },
       };
 
       await service.responseHelper(response, mockRes);

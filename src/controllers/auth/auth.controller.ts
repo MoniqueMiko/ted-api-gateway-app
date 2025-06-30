@@ -1,5 +1,5 @@
 import { ClientProxyService } from '../../service/client-proxy.service';
-import { HttpException } from '../../exceptions/http-exception.strategy';
+import { HttpException } from '../../exceptions/http-exception';
 import { Body, Controller, Post, Res } from '@nestjs/common';
 
 @Controller('auth')

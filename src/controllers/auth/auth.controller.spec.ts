@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthController } from './auth.controller';
 import { ClientProxyService } from '../../service/client-proxy.service';
-import { HttpException } from '../../exceptions/http-exception.strategy';
+import { HttpException } from '../../exceptions/http-exception';
 
 describe('AuthController', () => {
   let authController: AuthController;
