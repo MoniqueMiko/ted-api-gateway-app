@@ -120,7 +120,7 @@ REDIS_HOST = localhost
 ```
 ---
 
-## 🔗 Microserviços Relacionados
+## 🔗 Related Microservices
 
 - [🔐 Auth Microservice (NestJS)](https://github.com/MoniqueMiko/ted-auth-microservice)
 - [🧩 Url Shortener Microservice (NestJS)](https://github.com/MoniqueMiko/ted-url-shortener-microservice)
