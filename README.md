@@ -1,117 +1,119 @@
 # Ted API Gateway App
 
-Este projeto é um **API Gateway** construído com [NestJS](https://nestjs.com/), que faz comunicação com microserviços via **Redis**. Ele utiliza **JWT para autenticação**, e é totalmente escrito em TypeScript.
+This project is an **API Gateway** built with [NestJS](https://nestjs.com/) that communicates with microservices via **Redis**. It uses **JWT for authentication** and is fully written in TypeScript.
 
-## 📦 Tecnologias Principais
+## 📦 Main Technologies
 
 - [NestJS v11](https://docs.nestjs.com/)
 - [Redis](https://redis.io/)
 - [JWT](https://jwt.io/)
 - [Passport](https://www.passportjs.org/)
 - [RxJS](https://rxjs.dev/)
-- [Jest](https://jestjs.io/) + Supertest para testes
-- [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) para formatação e linting
+- [Jest](https://jestjs.io/)
+- [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) for formatting and linting
 
 ---
 
-## 🚀 Scripts Disponíveis
+## 🚀 Available Scripts
 
-| Comando               | Descrição                                        |
-|----------------------|--------------------------------------------------|
-| `npm run start`      | Inicia a aplicação                              |
-| `npm run start:dev`  | Inicia com `watch` (modo desenvolvimento)       |
-| `npm run start:debug`| Inicia em modo debug                            |
-| `npm run start:prod` | Inicia em produção (compilado)                  |
-| `npm run build`      | Compila o projeto (dist/)                       |
-| `npm run format`     | Formata os arquivos com Prettier                |
-| `npm run lint`       | Aplica ESLint nos arquivos `.ts`                |
-| `npm run test`       | Executa os testes unitários                     |
-| `npm run test:watch` | Executa testes unitários em modo observação     |
-| `npm run test:cov`   | Executa testes com relatório de cobertura       |
-| `npm run test:e2e`   | Executa testes end-to-end                        |
+| Comando               | Descrição                                      |
+|----------------------|-------------------------------------------------|
+| `npm run start`      | Starts the application                          |
+| `npm run start:dev`  | Starts with watch mode (development)            |
+| `npm run start:debug`| Starts in debug mode                            |
+| `npm run start:prod` | Starts in production mode (compiled)            |
+| `npm run build`      | Compiles the project (dist/)                    |
+| `npm run format`     | Formats files using Prettier                    |
+| `npm run lint`       | Runs ESLint on `.ts` files                      |
+| `npm run test`       | Runs unit tests                                 |
+| `npm run test:watch` | Runs unit tests in watch mode                   |
+| `npm run test:cov`   | Runs tests with coverage report                 |
+| `npm run test:e2e`   | Runs end-to-end tests                           |
 
 ---
 
-## 🔐 Autenticação
+## 🔐 Authentication
 
-Este projeto utiliza JWT com o PassportStrategy para autenticação. O token JWT pode ser enviado das seguintes formas:
+This project uses JWT with PassportStrategy for authentication. The JWT token can be sent in the following ways:
 
-| Local                                 | Exemplo                                     | Descrição                                 |
-|----------------------------           |---------------------------------------------|-------------------------------------------|
-| Header HTTP `Authorization`           | `Authorization: Bearer <Token>`             | Cabeçalho HTTP com chave e valor          |
-| Ferramenta de API (Insomnia, Postman) | Usar opção **Bearer Token** e colar o token | Autenticação via interface da ferramenta  |
+| Location                              | Example                                    | Description                                |
+|---------------------------------------|--------------------------------------------|--------------------------------------------|
+| HTTP Header `Authorization`           | `Authorization: Bearer <Token>`            | HTTP header with key and value             |
+| API Tool (Insomnia, Postman)          | Use **Bearer Token** option and paste token| Authentication via API tool interface      |
 
-A chave secreta `JWT_SECRET` deve estar definida no `.env`.
+The secret key `JWT_SECRET` must be set in the `.env` file.
 
 ---
 
 ## 🔄 Redis
-A comunicação entre os microserviços é feita via Redis (modo *pub/sub*), usando o `ClientProxy` do NestJS com transporte `REDIS`. 
-Certifique-se de que o Redis esteja rodando localmente (porta padrão `6379`).
+Communication between microservices is done via Redis (pub/sub mode), using NestJS’s `ClientProxy` with `REDIS` transport.  
+Make sure Redis is running locally (default port `6379`).
 
 ---
 
-## 🧪 Testes
+## 🧪 Tests
 
-- Testes unitários estão localizados em `*.spec.ts`.
-- Para rodar com cobertura:
+- Unit tests are located in `*.spec.ts` files.  
+- To run tests with coverage:
+
 ```bash
 npm run test:cov
-````
+```
 
 ---
 
 ## 📚 Swagger
-A documentação da API está disponível automaticamente em:
 
-http://localhost:3000/api
+The API documentation is automatically available at:
 
-A interface Swagger é gerada com base nos DTOs e decoradores do NestJS.
+http://localhost:3000/swagger
+
+The Swagger UI is generated based on DTOs and NestJS decorators.
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 src/
-├── config/                        # Configurações e guards relacionados à autenticação
+├── config/                        # Authentication-related configs and guards
 │   ├── jwt-guard.guard.ts
 │   ├── jwt-guard.guard.spec.ts
 │   ├── jwt-optional.guard.ts
 │   ├── jwt-optional.guard.spec.ts
 │   ├── jwt.strategy.ts
 │   └── jwt.strategy.spec.ts
-├── controllers/                   # Controllers responsáveis pelas rotas da API
+├── controllers/                   # Controllers responsible for API routes
 │   ├── auth/
 │   │   ├── auth.controller.ts
 │   │   └── auth.controller.spec.ts
 │   └── url-shortener/
 │       ├── url-shortener.controller.ts
 │       └── url-shortener.controller.spec.ts
-├── dto/                           # DTOs utilizados para documentação Swagger
+├── dto/                           # DTOs used for Swagger documentation
 │   ├── auth.dto.ts
 │   └── url-shortener.dto.ts
-├── exceptions/                    # Tratamento de exceções customizadas
+├── exceptions/                    # Custom exception handling
 │   ├── http-exception.ts
 │   └── http-exception.spec.ts
 ├── service/                       
-│   └── client-proxy.service.ts    # Proxy de comunicação com microserviços via Redis
-├── app.module.ts                  # Módulo raiz da aplicação
-└── main.ts                        # Ponto de entrada da aplicação
+│   └── client-proxy.service.ts    # Proxy for microservice communication via Redis
+├── app.module.ts                  # Root module of the application
+└── main.ts                        # Application entry point
 
 ```
 
 ---
 
-## ⚙️ Requisitos
+## ⚙️ Requirements
 
 * Node.js 18+
-* Redis rodando localmente
-* Variáveis de ambiente no `.env`, incluindo:
+* Redis running locally
+* Environment variables in .env file, including:
 
 ```
 
-JWT_SECRET=suachavesecreta
+JWT_SECRET= yoursecretkey
 REDIS_PORT = 6379
 REDIS_HOST = localhost
 
@@ -127,30 +129,30 @@ REDIS_HOST = localhost
 
 ## 🛠️ Build
 
-Para compilar o projeto:
+To compile the project:
 
 ```bash
 npm run build
 ```
 
-O código será gerado na pasta `dist/`.
+The compiled code will be generated in the dist/ folder.
 
 ---
 
-## 🧭 Melhorias Futuras
+## 🧭  Future Improvements
 
-- Criar histórico para atualizações e exclusões de URLs encurtadas  
-- Adicionar paginação na listagem de URLs  
-- Criar endpoint para inativar um usuário  
+- Create history tracking for updates and deletions of shortened URLs.
+- Add pagination to URL listings.
+- Create endpoint to deactivate a user.
 
 ---
 
-## 🧑‍💻 Autor
-- Monique Lourenço -> monique_lourenzia@hotmail.com
+## 🧑‍💻 Author
+- 👩‍💻 Monique Lourenço -> monique_lourenzia@hotmail.com
 ---
 
-## 📄 Licença
+## 📄 License
 
-Este projeto é **UNLICENSED**. Uso restrito conforme especificado.
+This project is UNLICENSED. Usage is restricted as specified.
 
 `````
