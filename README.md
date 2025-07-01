@@ -16,7 +16,7 @@ This project is an **API Gateway** built with [NestJS](https://nestjs.com/) that
 
 ## 🚀 Available Scripts
 
-| Comando               | Descrição                                      |
+| Command               | Description                                      |
 |----------------------|-------------------------------------------------|
 | `npm run start`      | Starts the application                          |
 | `npm run start:dev`  | Starts with watch mode (development)            |
@@ -143,7 +143,8 @@ The compiled code will be generated in the dist/ folder.
 
 - Create history tracking for updates and deletions of shortened URLs.
 - Add pagination to URL listings.
-- Create endpoint to deactivate a user.
+- Create endpoint to deactivate or update a user  
+- Implement SSO login in the future  
 
 ---
 
