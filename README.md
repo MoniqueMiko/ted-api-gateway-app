@@ -154,5 +154,3 @@ The compiled code will be generated in the dist/ folder.
 ## 📄 License
 
 This project is UNLICENSED. Usage is restricted as specified.
-
-`````
