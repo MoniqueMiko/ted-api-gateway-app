@@ -7,11 +7,11 @@ This project is an **API Gateway** built with [NestJS](https://nestjs.com/) that
 - [NestJS v11](https://docs.nestjs.com/)
 - [Redis (ioredis)](https://redis.io/)
 - [JWT + Passport](https://jwt.io/)
-- [Bull](https://docs.nestjs.com/techniques/queues) — queue handling with Redis
-- [Swagger (OpenAPI)](https://swagger.io/tools/swagger-ui/) — auto-generated API docs
-- [RxJS](https://rxjs.dev/) — reactive programming
-- [Jest](https://jestjs.io/) + [Supertest](https://github.com/visionmedia/supertest) — unit & e2e testing
-- [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) — linting and code formatting
+- [Bull](https://docs.nestjs.com/techniques/queues)
+- [Swagger (OpenAPI)](https://swagger.io/tools/swagger-ui/)
+- [RxJS](https://rxjs.dev/)
+- [Jest](https://jestjs.io/)
+- [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) 
 - [TypeScript](https://www.typescriptlang.org/)
 
 ---
